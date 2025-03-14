@@ -1,0 +1,12 @@
+export 'package:imaginotas/src/core/utils/utils.dart';
+export 'package:imaginotas/src/core/observers/language_observer.dart';
+export 'package:imaginotas/src/core/observers/multi_observer.dart';
+export 'package:imaginotas/src/core/services/injector/injector_conf.dart';
+export 'package:imaginotas/src/core/constants/enviroment.dart';
+export 'package:imaginotas/src/core/utils/env_loader.dart';
+export 'package:imaginotas/src/core/config/theme/app_theme.dart';
+export 'package:imaginotas/core/config/intl/l10n.dart';
+export 'package:imaginotas/src/core/error/app_exeption.dart';
+export 'package:imaginotas/src/core/extensions/custom_color_scheme.dart';
+export 'package:imaginotas/src/core/extensions/assets_from_string.dart';
+export 'package:imaginotas/src/core/services/image_manager/image_manager.dart';

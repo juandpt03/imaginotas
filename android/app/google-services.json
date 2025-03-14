@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1035079393672",
+    "project_id": "imaginotas",
+    "storage_bucket": "imaginotas.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035079393672:android:8527c98c8e6b2c87749a3d",
+        "android_client_info": {
+          "package_name": "com.example.imaginotas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT2KgiNTIwo-dLSAGPPqKaUzT8Sc7D3Zc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

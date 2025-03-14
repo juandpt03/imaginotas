@@ -1,0 +1,39 @@
+name: imaginotas
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  equatable: ^2.0.7
+  firebase_core: ^3.12.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.17
+  get_it: ^8.0.3
+  go_router: ^14.8.1
+  google_fonts: ^6.2.1
+  intl: ^0.19.0
+  logger: ^2.5.0
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/icons/
+    - .env
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations
+  main_locale: en
+  arb_dir: lib/core/config/intl
+  output_dir: lib/core/config/intl
