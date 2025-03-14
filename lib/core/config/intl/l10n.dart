@@ -64,6 +64,26 @@ class AppLocalizations {
   String get error {
     return Intl.message('Error', name: 'error', desc: '', args: []);
   }
+
+  /// `An unknown error occurred`
+  String get anUnknownErrorOccurred {
+    return Intl.message(
+      'An unknown error occurred',
+      name: 'anUnknownErrorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected null value`
+  String get unexpectedNullValue {
+    return Intl.message(
+      'Unexpected null value',
+      name: 'unexpectedNullValue',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

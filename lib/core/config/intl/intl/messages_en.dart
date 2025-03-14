@@ -22,7 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred",
+    ),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "unexpectedNullValue": MessageLookupByLibrary.simpleMessage(
+      "Unexpected null value",
+    ),
   };
 }

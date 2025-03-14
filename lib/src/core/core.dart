@@ -11,3 +11,4 @@ export 'package:imaginotas/src/core/extensions/custom_color_scheme.dart';
 export 'package:imaginotas/src/core/extensions/assets_from_string.dart';
 export 'package:imaginotas/src/core/services/image_manager/image_manager.dart';
 export 'package:imaginotas/src/core/services/firebase/firebase_options.dart';
+export 'package:imaginotas/src/core/functional/either.dart';
