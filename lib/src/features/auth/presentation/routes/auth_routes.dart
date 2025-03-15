@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/core.dart';
-
 import 'package:imaginotas/src/features/auth/presentation/screens/screens.dart';
 
 class AuthRoutes {
@@ -23,6 +22,16 @@ class AuthRoutes {
             (context, state) => transitionManager.slideTransition(
               state: state,
               child: const LoginScreen(),
+            ),
+      ),
+
+      GoRoute(
+        path: AppRoute.register.path,
+        name: AppRoute.register.name,
+        pageBuilder:
+            (context, state) => transitionManager.slideTransition(
+              state: state,
+              child: const RegisterScreen(),
             ),
       ),
     ];

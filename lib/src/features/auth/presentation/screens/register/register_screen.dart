@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/core.dart';
-import 'package:imaginotas/src/features/auth/presentation/bloc/blocs.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:imaginotas/src/features/auth/presentation/screens/login/widgets/widgets.dart';
 import 'package:imaginotas/src/features/auth/presentation/validators/auth_validators.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
@@ -34,8 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final textStyle = Theme.of(context).textTheme;
 
     return BlocProvider(
-      create: (context) => LoginBloc(login: context.read<AuthBloc>().login),
-      child: BlocBuilder<LoginBloc, LoginState>(
+      create:
+          (context) =>
+              RegisterBloc(register: context.read<AuthBloc>().register),
+      child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
           return Scaffold(
             body: SafeArea(
@@ -48,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          AppLocalizations.of(context).loginHere,
+                          AppLocalizations.of(context).createANewAccount,
                           style: textStyle.displaySmall?.copyWith(
                             color: colors.primary,
                           ),
@@ -56,9 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const GapY.large(),
                         Text(
-                          AppLocalizations.of(
-                            context,
-                          ).welcomeBackYouHaveBeenMissed,
+                          'Fill in your details to create an account',
                           style: textStyle.titleMedium?.copyWith(
                             color: colors.outline,
                             fontWeight: FontWeight.bold,
@@ -74,15 +75,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               CustomTextFormField(
                                 onChanged:
-                                    context.read<LoginBloc>().onEmailChanged,
+                                    context.read<RegisterBloc>().onEmailChanged,
                                 hintText: AppLocalizations.of(context).email,
-                                keyboardType: TextInputType.number,
-                                suffixIcon: const Icon(Icons.badge),
+                                keyboardType: TextInputType.emailAddress,
+                                suffixIcon: const Icon(Icons.email),
                                 validator: AuthValidators.validateEmail,
                               ),
                               CustomTextFormField(
                                 onChanged:
-                                    context.read<LoginBloc>().onPasswordChanged,
+                                    context
+                                        .read<RegisterBloc>()
+                                        .onPasswordChanged,
                                 hintText: AppLocalizations.of(context).password,
                                 keyboardType: TextInputType.visiblePassword,
                                 obscureText: !state.isPasswordVisible,
@@ -90,54 +93,54 @@ class _LoginScreenState extends State<LoginScreen> {
                                   isVisible: state.isPasswordVisible,
                                   onToggle:
                                       context
-                                          .read<LoginBloc>()
+                                          .read<RegisterBloc>()
                                           .onTogglePasswordVisibility,
                                 ),
                                 validator: AuthValidators.validatePassword,
                               ),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: CustomTextButton(
-                                  text:
-                                      AppLocalizations.of(
-                                        context,
-                                      ).forgotPassword,
-                                  onPressed: () {},
-                                  style: textStyle.bodyMedium?.copyWith(
-                                    color: colors.outline,
-                                  ),
+                              CustomTextFormField(
+                                onChanged:
+                                    context
+                                        .read<RegisterBloc>()
+                                        .onConfirmPasswordChanged,
+                                hintText: 'Confirm Password',
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: !state.isConfirmPasswordVisible,
+                                suffixIcon: PasswordIcon(
+                                  isVisible: state.isConfirmPasswordVisible,
+                                  onToggle:
+                                      context
+                                          .read<RegisterBloc>()
+                                          .onToggleConfirmPasswordVisibility,
                                 ),
+                                validator: (value) {
+                                  if (value != state.user.password) {
+                                    return 'Passwords do not match';
+                                  }
+                                  return null;
+                                },
                               ),
-
                               CustomGradientButton(
                                 isExpanded: true,
-                                loadingText:
-                                    AppLocalizations.of(context).loggingIn,
+                                loadingText: 'Creating account...',
                                 isLoading: state.isLoading,
                                 onPressed: () {
                                   final validate =
                                       _formKey.currentState?.validate() ??
                                       false;
                                   if (validate) {
-                                    context.read<LoginBloc>().onSubmitForm();
+                                    context.read<RegisterBloc>().onSubmitForm();
                                   }
                                 },
-                                text: AppLocalizations.of(context).login,
+                                text: 'Register',
                               ),
-
                               CustomTextButton(
-                                text:
-                                    AppLocalizations.of(
-                                      context,
-                                    ).createANewAccount,
+                                text: 'Already have an account? Login',
                                 style: textStyle.bodyMedium?.copyWith(
                                   color: colors.outline,
                                 ),
-
                                 onPressed:
-                                    () => context.pushNamed(
-                                      AppRoute.register.name,
-                                    ),
+                                    () => context.goNamed(AppRoute.login.name),
                               ),
                             ],
                           ),

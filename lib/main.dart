@@ -33,8 +33,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = context.watch<LanguageBloc>().state;
+    final appRouter = AppRouter(authBloc: context.read<AuthBloc>());
     return MaterialApp.router(
-      routerConfig: DI.sl<AppRouter>().router,
+      routerConfig: appRouter.router,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

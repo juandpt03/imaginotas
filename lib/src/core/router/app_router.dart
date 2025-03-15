@@ -11,21 +11,24 @@ import 'package:imaginotas/src/features/home/presentation/routes/home_routes.dar
 import 'app_route.dart';
 
 class AppRouter {
+  final AuthBloc authBloc;
+  final StreamToListenable authStateListenable;
+  AppRouter({required this.authBloc})
+    : authStateListenable = StreamToListenable(authBloc.stream);
   GoRouter get router => _router;
 
   late final _router = GoRouter(
     initialLocation: AppRoute.splash.path,
     debugLogDiagnostics: true,
+    refreshListenable: authStateListenable,
     routes: [...AuthRoutes().getRoutes(), ...HomeRoutes.getRoutes()],
     redirect: (context, state) {
-      final authState = context.watch<AuthBloc>().state;
+      final authState = context.read<AuthBloc>().state;
       final isGoingTo = state.matchedLocation;
       final redirectPath = RouteGuard.guard(isGoingTo, authState);
       return redirectPath;
     },
   );
-
-  AppRouter();
 }
 
 class StreamToListenable extends ChangeNotifier {

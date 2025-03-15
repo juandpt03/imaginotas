@@ -9,9 +9,9 @@ final class AuthLoginRequested extends AuthEvent {
   const AuthLoginRequested({required this.user});
 }
 
-final class AuthSignUpRequested extends AuthEvent {
+final class AuthRegisterRequested extends AuthEvent {
   final UserEntity user;
-  const AuthSignUpRequested({required this.user});
+  const AuthRegisterRequested({required this.user});
 }
 
 final class AuthLogoutRequested extends AuthEvent {

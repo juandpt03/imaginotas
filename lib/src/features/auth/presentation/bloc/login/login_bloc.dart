@@ -21,6 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<SetLoading>(_onSetLoading);
   }
 
+  // Event handlers
   void _onEmailChanged(EmailChanged event, Emitter<LoginState> emit) {
     final updatedUser = state.user.copyWith(email: event.email);
     emit(state.copyWith(user: updatedUser));
@@ -59,6 +60,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onLoadingChanged(bool isLoading) => add(SetLoading(isLoading));
+
+  // Public methods to dispatch events
   void onTogglePasswordVisibility(bool isVisible) =>
       add(TogglePasswordVisibility(isVisible));
 

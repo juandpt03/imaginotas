@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void _handlers() {
     on<AuthLoginRequested>(_onLoginRequested);
-    on<AuthSignUpRequested>(_onSignUpRequested);
+    on<AuthRegisterRequested>(_onRegisterRequested);
     on<AuthCheckStatusRequested>(_onCheckStatusRequested);
     on<AuthStateChanged>(_onAuthStateChanged);
     on<AuthLogoutRequested>(_onLogoutRequested);
@@ -65,8 +65,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _onSignUpRequested(
-    AuthSignUpRequested event,
+  Future<void> _onRegisterRequested(
+    AuthRegisterRequested event,
     Emitter<AuthState> emit,
   ) async {
     final result = await _authUseCases.register(user: event.user);
@@ -92,7 +92,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // Event emitters
   void login(UserEntity user) => add(AuthLoginRequested(user: user));
 
-  void signUp(UserEntity user) => add(AuthSignUpRequested(user: user));
+  void register(UserEntity user) => add(AuthRegisterRequested(user: user));
 
   void logout() => add(AuthLogoutRequested());
 
