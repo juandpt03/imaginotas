@@ -14,3 +14,4 @@ export 'package:imaginotas/src/core/functional/either.dart';
 export 'package:imaginotas/src/core/router/app_route.dart';
 export 'package:imaginotas/src/core/router/app_router.dart';
 export 'package:imaginotas/src/core/config/intl/l10n.dart';
+export 'package:imaginotas/src/core/constants/collections.dart';
