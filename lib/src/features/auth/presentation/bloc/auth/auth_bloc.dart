@@ -57,8 +57,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthLoginRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(AuthChecking());
-
     final result = await _authUseCases.login(user: event.user);
 
     result.when(
@@ -71,8 +69,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthSignUpRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(AuthChecking());
-
     final result = await _authUseCases.register(user: event.user);
 
     result.when(
