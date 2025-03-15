@@ -194,6 +194,71 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Fill in your details to create an account`
+  String get fillInYourDetailsToCreateAnAccount {
+    return Intl.message(
+      'Fill in your details to create an account',
+      name: 'fillInYourDetailsToCreateAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password is required`
+  String get confirmPasswordIsRequired {
+    return Intl.message(
+      'Confirm password is required',
+      name: 'confirmPasswordIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get passwordsDoNotMatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'passwordsDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Creating account...`
+  String get creatingAccount {
+    return Intl.message(
+      'Creating account...',
+      name: 'creatingAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? Login`
+  String get alreadyHaveAnAccountLogin {
+    return Intl.message(
+      'Already have an account? Login',
+      name: 'alreadyHaveAnAccountLogin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -23,6 +23,21 @@ class AuthValidators {
 
     return null;
   }
+
+  static String? validateConfirmPassword(
+    String? confirmPassword,
+    String? password,
+  ) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return ValidatorMessages.confirmPasswordRequired;
+    }
+
+    if (confirmPassword != password) {
+      return ValidatorMessages.passwordsDoNotMatch;
+    }
+
+    return null;
+  }
 }
 
 class ValidatorMessages {
@@ -35,4 +50,7 @@ class ValidatorMessages {
       AppLocalizations.current.passwordMustBeAtLeast8Characters;
   static String get includeLetterAndNumber =>
       AppLocalizations.current.includeLetterAndNumber;
+  static String get confirmPasswordRequired =>
+      AppLocalizations.current.confirmPasswordIsRequired;
+  static String get passwordsDoNotMatch => AppLocalizations.current.passwordsDoNotMatch;
 }

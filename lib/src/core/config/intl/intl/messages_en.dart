@@ -22,17 +22,30 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "alreadyHaveAnAccountLogin": MessageLookupByLibrary.simpleMessage(
+      "Already have an account? Login",
+    ),
     "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
       "An unknown error occurred",
     ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "confirmPasswordIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Confirm password is required",
+    ),
     "createANewAccount": MessageLookupByLibrary.simpleMessage(
       "Create a new account",
+    ),
+    "creatingAccount": MessageLookupByLibrary.simpleMessage(
+      "Creating account...",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "Email is required",
     ),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "fillInYourDetailsToCreateAnAccount": MessageLookupByLibrary.simpleMessage(
+      "Fill in your details to create an account",
+    ),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password?"),
     "includeLetterAndNumber": MessageLookupByLibrary.simpleMessage(
       "Include letter and number",
@@ -51,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordMustBeAtLeast8Characters": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 8 characters",
     ),
+    "passwordsDoNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "unexpectedNullValue": MessageLookupByLibrary.simpleMessage(
       "Unexpected null value",

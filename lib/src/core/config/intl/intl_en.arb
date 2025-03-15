@@ -16,5 +16,12 @@
   "loginHere": "Login here",
   "welcomeBackYouHaveBeenMissed": "Welcome back you have been missed!",
   "forgotPassword": "Forgot password?",
-  "createANewAccount": "Create a new account"
+  "createANewAccount": "Create a new account",
+  "fillInYourDetailsToCreateAnAccount": "Fill in your details to create an account",
+  "confirmPassword": "Confirm Password",
+  "confirmPasswordIsRequired": "Confirm password is required",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "register": "Register",
+  "creatingAccount": "Creating account...",
+  "alreadyHaveAnAccountLogin": "Already have an account? Login"
 }

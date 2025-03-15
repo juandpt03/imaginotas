@@ -59,7 +59,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const GapY.large(),
                         Text(
-                          'Fill in your details to create an account',
+                          AppLocalizations.of(
+                            context,
+                          ).fillInYourDetailsToCreateAnAccount,
                           style: textStyle.titleMedium?.copyWith(
                             color: colors.outline,
                             fontWeight: FontWeight.bold,
@@ -103,7 +105,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     context
                                         .read<RegisterBloc>()
                                         .onConfirmPasswordChanged,
-                                hintText: 'Confirm Password',
+                                hintText:
+                                    AppLocalizations.of(
+                                      context,
+                                    ).confirmPassword,
                                 keyboardType: TextInputType.visiblePassword,
                                 obscureText: !state.isConfirmPasswordVisible,
                                 suffixIcon: PasswordIcon(
@@ -113,16 +118,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           .read<RegisterBloc>()
                                           .onToggleConfirmPasswordVisibility,
                                 ),
-                                validator: (value) {
-                                  if (value != state.user.password) {
-                                    return 'Passwords do not match';
-                                  }
-                                  return null;
-                                },
+                                validator:
+                                    (value) =>
+                                        AuthValidators.validateConfirmPassword(
+                                          value,
+                                          state.user.password,
+                                        ),
                               ),
                               CustomGradientButton(
                                 isExpanded: true,
-                                loadingText: 'Creating account...',
+                                loadingText:
+                                    AppLocalizations.of(
+                                      context,
+                                    ).creatingAccount,
                                 isLoading: state.isLoading,
                                 onPressed: () {
                                   final validate =
@@ -132,10 +140,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     context.read<RegisterBloc>().onSubmitForm();
                                   }
                                 },
-                                text: 'Register',
+                                text: AppLocalizations.of(context).register,
                               ),
                               CustomTextButton(
-                                text: 'Already have an account? Login',
+                                text:
+                                    AppLocalizations.of(
+                                      context,
+                                    ).alreadyHaveAnAccountLogin,
                                 style: textStyle.bodyMedium?.copyWith(
                                   color: colors.outline,
                                 ),
