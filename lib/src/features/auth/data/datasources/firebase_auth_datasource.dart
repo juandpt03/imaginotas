@@ -50,4 +50,29 @@ class FirebaseAuthDatasource implements AuthDatasource {
       return Either.left(AppException.fromMessage(e.toString()));
     }
   }
+
+  @override
+  Stream<UserEntity?> get authStateChanges =>
+      _firebaseAuth.authStateChanges().map((user) {
+        if (user == null) return null;
+        return UserModel.fromFirebaseUser(user);
+      });
+
+  @override
+  UserEntity? get currentUser {
+    final user = _firebaseAuth.currentUser;
+    return user != null ? UserModel.fromFirebaseUser(user) : null;
+  }
+
+  @override
+  Future<Either<AppException, void>> logout() async {
+    try {
+      final response = await _firebaseAuth.signOut();
+      return Either.right(response);
+    } on FirebaseAuthException catch (e) {
+      return Either.left(AppException.fromMessage(e.message));
+    } catch (e) {
+      return Either.left(AppException.fromMessage(e.toString()));
+    }
+  }
 }

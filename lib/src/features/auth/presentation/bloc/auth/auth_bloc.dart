@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imaginotas/src/core/error/app_exeption.dart';
@@ -9,12 +11,45 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUseCases _authUseCases;
+  late final StreamSubscription<UserEntity?> _authStateSubscription;
 
   AuthBloc({required AuthUseCases authUseCases})
     : _authUseCases = authUseCases,
       super(AuthChecking()) {
+    _handlers();
+    _subscribeToAuthChanges();
+    _checkStatus();
+  }
+
+  void _handlers() {
     on<AuthLoginRequested>(_onLoginRequested);
     on<AuthSignUpRequested>(_onSignUpRequested);
+    on<AuthCheckStatusRequested>(_onCheckStatusRequested);
+    on<AuthStateChanged>(_onAuthStateChanged);
+    on<AuthLogoutRequested>(_onLogoutRequested);
+  }
+
+  // Event handlers
+  void _onCheckStatusRequested(
+    AuthCheckStatusRequested event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(AuthChecking());
+    final currentUser = _authUseCases.currentUser;
+
+    if (currentUser != null) {
+      emit(AuthAuthenticated(currentUser));
+    } else {
+      emit(AuthUnauthenticated());
+    }
+  }
+
+  void _onAuthStateChanged(AuthStateChanged event, Emitter<AuthState> emit) {
+    if (event.user != null) {
+      emit(AuthAuthenticated(event.user!));
+    } else {
+      emit(AuthUnauthenticated());
+    }
   }
 
   Future<void> _onLoginRequested(
@@ -45,7 +80,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
+  Future<void> _onLogoutRequested(
+    AuthLogoutRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    final result = await _authUseCases.logout();
+
+    result.when(
+      left: (exception) => emit(AuthError(exception)),
+      right: (_) => emit(AuthUnauthenticated()),
+    );
+  }
+
+  // Event emitters
   void login(UserEntity user) => add(AuthLoginRequested(user: user));
 
   void signUp(UserEntity user) => add(AuthSignUpRequested(user: user));
+
+  void logout() => add(AuthLogoutRequested());
+
+  void _checkStatus() => add(AuthCheckStatusRequested());
+
+  void _subscribeToAuthChanges() {
+    _authStateSubscription = _authUseCases.authStateChanges.listen(
+      (user) => add(AuthStateChanged(user)),
+    );
+  }
+
+  @override
+  Future<void> close() {
+    _authStateSubscription.cancel();
+    return super.close();
+  }
 }

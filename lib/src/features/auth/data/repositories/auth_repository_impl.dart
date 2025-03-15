@@ -16,4 +16,13 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either<AppException<Exception>, UserEntity>> register({
     required UserEntity user,
   }) => datasource.register(user: user);
+
+  @override
+  Stream<UserEntity?> get authStateChanges => datasource.authStateChanges;
+
+  @override
+  UserEntity? get currentUser => datasource.currentUser;
+
+  @override
+  Future<Either<AppException<Exception>, void>> logout() => datasource.logout();
 }

@@ -15,11 +15,12 @@ final class AuthSignUpRequested extends AuthEvent {
 }
 
 final class AuthLogoutRequested extends AuthEvent {
-  final UserEntity user;
-  const AuthLogoutRequested({required this.user});
+  const AuthLogoutRequested();
 }
 
-final class AuthCheckStatusRequested extends AuthEvent {
-  final UserEntity user;
-  const AuthCheckStatusRequested({required this.user});
+final class AuthCheckStatusRequested extends AuthEvent {}
+
+final class AuthStateChanged extends AuthEvent {
+  final UserEntity? user;
+  const AuthStateChanged(this.user);
 }

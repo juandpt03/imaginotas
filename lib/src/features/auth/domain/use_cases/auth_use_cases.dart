@@ -12,4 +12,9 @@ class AuthUseCases {
   Future<Either<AppException, UserEntity>> register({
     required UserEntity user,
   }) => authRepository.register(user: user);
+
+  Future<Either<AppException, void>> logout() => authRepository.logout();
+
+  UserEntity? get currentUser => authRepository.currentUser;
+  Stream<UserEntity?> get authStateChanges => authRepository.authStateChanges;
 }
