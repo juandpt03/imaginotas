@@ -44,8 +44,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           if (state.isSubmitted) {
             AlertService.showToast(
               context: context,
-              description:
-                  '${AppLocalizations.of(context).resetPasswordLinkSentTo}${state.email}',
+              description: AppLocalizations.of(context).resetPasswordLinkSentTo,
               success: true,
             );
             context.pop();

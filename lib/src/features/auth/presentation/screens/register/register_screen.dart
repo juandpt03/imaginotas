@@ -41,6 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
           return Scaffold(
+            appBar: CustomAppBar(title: AppLocalizations.of(context).register),
             body: SafeArea(
               child: GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),

@@ -445,10 +445,10 @@ class AppLocalizations {
     return Intl.message('All', name: 'all', desc: '', args: []);
   }
 
-  /// `Reset password link sent to`
+  /// `Reset password link sent`
   String get resetPasswordLinkSentTo {
     return Intl.message(
-      'Reset password link sent to',
+      'Reset password link sent',
       name: 'resetPasswordLinkSentTo',
       desc: '',
       args: [],

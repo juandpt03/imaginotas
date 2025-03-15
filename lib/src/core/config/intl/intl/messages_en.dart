@@ -108,7 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "resetPasswordLinkSentTo": MessageLookupByLibrary.simpleMessage(
-      "Reset password link sent to",
+      "Reset password link sent",
     ),
     "saveNote": MessageLookupByLibrary.simpleMessage("Save Note"),
     "saving": MessageLookupByLibrary.simpleMessage("Saving..."),

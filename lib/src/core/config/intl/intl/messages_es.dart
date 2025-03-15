@@ -116,7 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Restablecer Contraseña",
     ),
     "resetPasswordLinkSentTo": MessageLookupByLibrary.simpleMessage(
-      "Enlace para restablecer contraseña enviado a",
+      "Enlace para restablecer contraseña enviado",
     ),
     "saveNote": MessageLookupByLibrary.simpleMessage("Guardar nota"),
     "saving": MessageLookupByLibrary.simpleMessage("Guardando..."),
