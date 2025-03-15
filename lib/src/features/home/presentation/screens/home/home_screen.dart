@@ -56,7 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
               title: AppLocalizations.of(context).myNotes,
               actions: [
                 IconButton(
-                  icon: ImageManager.icons.logout.toSvg(),
+                  icon: ImageManager.icons.logout.toSvg(
+                    color: colors.onSurface,
+                  ),
                   onPressed: () => context.read<AuthBloc>().logout(),
                 ),
               ],
@@ -106,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: colors.primary,
 
               onPressed: () => context.pushNamed(AppRoute.note.name),
-              child: const Icon(Icons.add),
+              child: Icon(Icons.add, color: colors.onPrimary),
             ),
           );
         },

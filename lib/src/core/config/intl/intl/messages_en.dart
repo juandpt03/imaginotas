@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAnAccountLogin": MessageLookupByLibrary.simpleMessage(
       "Already have an account? Login",
     ),
@@ -31,9 +32,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToDeleteThisNote": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete this note?",
     ),
+    "areYouSureYouWantToDeleteThisNoteThis": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this note? This action cannot be undone.",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "categoryMustBeAtLeast2Characters": MessageLookupByLibrary.simpleMessage(
       "Category must be at least 2 characters",
+    ),
+    "categoryOptional": MessageLookupByLibrary.simpleMessage(
+      "Category (optional)",
     ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmPasswordIsRequired": MessageLookupByLibrary.simpleMessage(
@@ -45,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createANewAccount": MessageLookupByLibrary.simpleMessage(
       "Create a new account",
     ),
+    "createNote": MessageLookupByLibrary.simpleMessage("Create Note"),
     "createYourFirstNoteByTappingTheButtonBelow":
         MessageLookupByLibrary.simpleMessage(
           "Create your first note by tapping the button below.",
@@ -54,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteNote": MessageLookupByLibrary.simpleMessage("Delete Note"),
+    "editNote": MessageLookupByLibrary.simpleMessage("Edit Note"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "Email is required",
@@ -75,6 +84,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginHere": MessageLookupByLibrary.simpleMessage("Login here"),
     "myNotes": MessageLookupByLibrary.simpleMessage("My notes"),
     "noNotesYet": MessageLookupByLibrary.simpleMessage("No notes yet"),
+    "noteContent": MessageLookupByLibrary.simpleMessage("Note content"),
+    "noteCreatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Note created successfully!",
+    ),
+    "noteUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Note updated successfully!",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordIsRequired": MessageLookupByLibrary.simpleMessage(
       "Password is required",
@@ -86,8 +102,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords do not match",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "saveNote": MessageLookupByLibrary.simpleMessage("Save Note"),
+    "saving": MessageLookupByLibrary.simpleMessage("Saving..."),
     "searchNotes": MessageLookupByLibrary.simpleMessage("Search notes..."),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "title": MessageLookupByLibrary.simpleMessage("Title"),
     "titleIsRequired": MessageLookupByLibrary.simpleMessage(
       "Title is required",
     ),
@@ -97,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "unexpectedNullValue": MessageLookupByLibrary.simpleMessage(
       "Unexpected null value",
     ),
+    "updateNote": MessageLookupByLibrary.simpleMessage("Update Note"),
+    "updating": MessageLookupByLibrary.simpleMessage("Updating..."),
     "welcomeBackYouHaveBeenMissed": MessageLookupByLibrary.simpleMessage(
       "Welcome back you have been missed!",
     ),

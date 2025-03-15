@@ -73,13 +73,18 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
         notes: event.notes,
         allNotes: event.notes,
         categories: categories,
-        selectedCategory: '',
+        selectedCategory: event.category ?? '',
       ),
     );
   }
 
   void _onFilterByCategory(FilterByCategory event, Emitter<NotesState> emit) {
     if (state is! NotesSuccess) return;
+
+    if (event.category.isEmpty) {
+      loadNotes();
+      return;
+    }
 
     emit(const NotesLoading());
 
@@ -89,11 +94,16 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
         .listen(
           (notes) {
             if (!isClosed) {
-              add(NotesUpdated(notes: notes));
+              add(NotesUpdated(notes: notes, category: event.category));
 
               if (state is NotesSuccess) {
                 final notesState = state as NotesSuccess;
-                add(NotesUpdated(notes: notesState.notes));
+                add(
+                  NotesUpdated(
+                    notes: notesState.notes,
+                    category: event.category,
+                  ),
+                );
               }
             }
           },

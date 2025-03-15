@@ -70,7 +70,10 @@ class CustomGradientButton extends StatelessWidget {
                     const SizedBox(width: Gaps.paddingSmall),
                     Text(
                       loadingText ?? AppLocalizations.of(context).loading,
-                      style: textStyle,
+                      style: textStyle?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 )

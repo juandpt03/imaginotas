@@ -11,7 +11,8 @@ class LoadNotes extends NotesEvent {
 
 class NotesUpdated extends NotesEvent {
   final List<NoteEntity> notes;
-  const NotesUpdated({required this.notes});
+  final String? category;
+  const NotesUpdated({required this.notes, this.category});
 }
 
 class FilterByCategory extends NotesEvent {

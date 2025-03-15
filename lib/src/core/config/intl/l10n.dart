@@ -354,6 +354,96 @@ class AppLocalizations {
   String get delete {
     return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
+
+  /// `Note updated successfully!`
+  String get noteUpdatedSuccessfully {
+    return Intl.message(
+      'Note updated successfully!',
+      name: 'noteUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note created successfully!`
+  String get noteCreatedSuccessfully {
+    return Intl.message(
+      'Note created successfully!',
+      name: 'noteCreatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Note`
+  String get editNote {
+    return Intl.message('Edit Note', name: 'editNote', desc: '', args: []);
+  }
+
+  /// `Create Note`
+  String get createNote {
+    return Intl.message('Create Note', name: 'createNote', desc: '', args: []);
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message('Title', name: 'title', desc: '', args: []);
+  }
+
+  /// `Category (optional)`
+  String get categoryOptional {
+    return Intl.message(
+      'Category (optional)',
+      name: 'categoryOptional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note content`
+  String get noteContent {
+    return Intl.message(
+      'Note content',
+      name: 'noteContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Note`
+  String get updateNote {
+    return Intl.message('Update Note', name: 'updateNote', desc: '', args: []);
+  }
+
+  /// `Save Note`
+  String get saveNote {
+    return Intl.message('Save Note', name: 'saveNote', desc: '', args: []);
+  }
+
+  /// `Updating...`
+  String get updating {
+    return Intl.message('Updating...', name: 'updating', desc: '', args: []);
+  }
+
+  /// `Saving...`
+  String get saving {
+    return Intl.message('Saving...', name: 'saving', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to delete this note? This action cannot be undone.`
+  String get areYouSureYouWantToDeleteThisNoteThis {
+    return Intl.message(
+      'Are you sure you want to delete this note? This action cannot be undone.',
+      name: 'areYouSureYouWantToDeleteThisNoteThis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

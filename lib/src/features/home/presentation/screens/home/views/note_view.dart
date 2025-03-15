@@ -7,6 +7,7 @@ import 'package:imaginotas/src/features/home/domain/entities/note.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/note/note_form_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/notes/notes_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/validators/home_validators.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/app_bar/custom_app_bar.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
 class NoteView extends StatefulWidget {
@@ -20,53 +21,26 @@ class NoteView extends StatefulWidget {
 
 class _NoteViewState extends State<NoteView> {
   final _formKey = GlobalKey<FormState>();
-  final _titleController = TextEditingController();
-  final _contentController = TextEditingController();
-  final _categoryController = TextEditingController();
-  late final NoteFormBloc _formBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _formBloc = NoteFormBloc(
-      noteUseCases: DI.sl.get(),
-      initialNote: widget.note,
-    );
-
-    if (widget.note != null) {
-      _titleController.text = widget.note!.title;
-      _contentController.text = widget.note!.content;
-      _categoryController.text = widget.note!.category;
-    }
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _contentController.dispose();
-    _categoryController.dispose();
-    _formBloc.close();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     final isEditing = widget.note != null;
 
-    return BlocProvider.value(
-      value: _formBloc,
+    return BlocProvider(
+      create:
+          (context) =>
+              NoteFormBloc(noteUseCases: DI.sl.get(), initialNote: widget.note),
       child: BlocConsumer<NoteFormBloc, NoteFormState>(
         listener: (context, state) {
           if (state.isSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
+            AlertService.showToast(
+              context: context,
+              description:
                   isEditing
-                      ? 'Note updated successfully!'
-                      : 'Note created successfully!',
-                ),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-              ),
+                      ? AppLocalizations.of(context).noteUpdatedSuccessfully
+                      : AppLocalizations.of(context).noteCreatedSuccessfully,
+              success: true,
             );
             context.pop();
           }
@@ -80,85 +54,109 @@ class _NoteViewState extends State<NoteView> {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(
-              title: Text(isEditing ? 'Edit Note' : 'Create Note'),
+            appBar: CustomAppBar(
+              title:
+                  isEditing
+                      ? AppLocalizations.of(context).editNote
+                      : AppLocalizations.of(context).createNote,
+
               actions: [
                 if (isEditing)
                   IconButton(
-                    icon: const Icon(Icons.delete),
+                    icon: ImageManager.icons.delete.toSvg(color: colors.error),
+
                     color: Theme.of(context).colorScheme.error,
                     onPressed: () => _showDeleteConfirmationDialog(context),
                   ),
               ],
             ),
             body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(Gaps.paddingMedium),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomTextFormField(
-                                controller: _titleController,
-                                hintText: 'Title',
-                                validator: HomeValidators.validateTitle,
-                                onChanged: (value) {
-                                  _formBloc.onTitleChanged(value);
-                                },
-                              ),
+              child: GestureDetector(
+                onTap: () => FocusScope.of(context).unfocus(),
+                child: Padding(
+                  padding: const EdgeInsets.all(Gaps.paddingMedium),
+                  child: Form(
+                    key: _formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomTextFormField(
+                                  initialValue: state.note.title,
+                                  hintText: AppLocalizations.of(context).title,
+                                  validator: HomeValidators.validateTitle,
+                                  onChanged:
+                                      context
+                                          .read<NoteFormBloc>()
+                                          .onTitleChanged,
+                                ),
 
-                              const GapY.medium(),
+                                const GapY.medium(),
 
-                              CustomTextFormField(
-                                controller: _categoryController,
-                                hintText: 'Category (optional)',
-                                validator: HomeValidators.validateCategory,
-                                onChanged: (value) {
-                                  _formBloc.onCategoryChanged(value);
-                                },
-                              ),
+                                CustomTextFormField(
+                                  initialValue: state.note.category,
+                                  hintText:
+                                      AppLocalizations.of(
+                                        context,
+                                      ).categoryOptional,
+                                  validator: HomeValidators.validateCategory,
+                                  onChanged:
+                                      context
+                                          .read<NoteFormBloc>()
+                                          .onCategoryChanged,
+                                ),
 
-                              const GapY.medium(),
+                                const GapY.medium(),
 
-                              CustomTextFormField(
-                                controller: _contentController,
-                                hintText: 'Note content',
-                                maxLines: 10,
-                                keyboardType: TextInputType.multiline,
-                                validator: HomeValidators.validateContent,
-                                onChanged: (value) {
-                                  _formBloc.onContentChanged(value);
-                                },
-                              ),
-                            ],
+                                CustomTextFormField(
+                                  initialValue: state.note.content,
+                                  hintText:
+                                      AppLocalizations.of(context).noteContent,
+                                  maxLines: 10,
+                                  keyboardType: TextInputType.multiline,
+                                  validator: HomeValidators.validateContent,
+                                  onChanged:
+                                      context
+                                          .read<NoteFormBloc>()
+                                          .onContentChanged,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
 
-                      const GapY.medium(),
+                        const GapY.medium(),
 
-                      CustomGradientButton(
-                        isExpanded: true,
-                        text: isEditing ? 'Update Note' : 'Save Note',
-                        loadingText: isEditing ? 'Updating...' : 'Saving...',
-                        isLoading: state.isLoading,
-                        onPressed: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            final userId =
-                                (context.read<AuthBloc>().state
-                                        as AuthAuthenticated)
-                                    .user
-                                    .id;
-                            _formBloc.onFormSubmitted(userId);
-                          }
-                        },
-                      ),
-                    ],
+                        CustomGradientButton(
+                          isExpanded: true,
+                          text:
+                              isEditing
+                                  ? AppLocalizations.of(context).updateNote
+                                  : AppLocalizations.of(context).saveNote,
+                          loadingText:
+                              isEditing
+                                  ? AppLocalizations.of(context).updating
+                                  : AppLocalizations.of(context).saving,
+                          isLoading: state.isLoading,
+                          onPressed: () {
+                            if (_formKey.currentState?.validate() ?? false) {
+                              final userId =
+                                  (context.read<AuthBloc>().state
+                                          as AuthAuthenticated)
+                                      .user
+                                      .id;
+                              context.read<NoteFormBloc>().onFormSubmitted(
+                                userId,
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -172,30 +170,31 @@ class _NoteViewState extends State<NoteView> {
   void _showDeleteConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
-            title: const Text('Delete Note'),
-            content: const Text(
-              'Are you sure you want to delete this note? This action cannot be undone.',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  context.read<NotesBloc>().deleteNote(widget.note!.id);
-                  context.pop();
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: Theme.of(context).colorScheme.error,
-                ),
-                child: const Text('Delete'),
-              ),
-            ],
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context).deleteNote),
+          content: Text(
+            AppLocalizations.of(context).areYouSureYouWantToDeleteThisNoteThis,
           ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(AppLocalizations.of(context).cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                context.read<NotesBloc>().deleteNote(widget.note!.id);
+                context.pop();
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.error,
+              ),
+              child: Text(AppLocalizations.of(context).delete),
+            ),
+          ],
+        );
+      },
     );
   }
 }

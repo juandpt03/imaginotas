@@ -46,7 +46,7 @@ class NoteCard extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete_outline, color: colors.error),
+                    icon: ImageManager.icons.delete.toSvg(color: colors.error),
                     onPressed: () {
                       showDialog(
                         context: context,

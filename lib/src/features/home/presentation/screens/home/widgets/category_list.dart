@@ -22,9 +22,28 @@ class CategoryList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Gaps.paddingMedium),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
+        itemCount: categories.length + 1,
         itemBuilder: (context, index) {
-          final category = categories[index];
+          if (index == 0) {
+            final isSelected = selectedCategory == '';
+
+            return Padding(
+              padding: const EdgeInsets.only(right: Gaps.paddingSmall),
+              child: FilterChip(
+                label: Text(AppLocalizations.of(context).all),
+                selected: isSelected,
+                onSelected: (selected) => onCategorySelected(''),
+                backgroundColor: colors.surface,
+                selectedColor: colors.primary,
+                labelStyle: TextStyle(
+                  color: isSelected ? colors.onPrimary : colors.onSurface,
+                ),
+                checkmarkColor: colors.onPrimary,
+              ),
+            );
+          }
+
+          final category = categories[index - 1];
           final isSelected = category == selectedCategory;
 
           return Padding(
@@ -38,6 +57,7 @@ class CategoryList extends StatelessWidget {
               labelStyle: TextStyle(
                 color: isSelected ? colors.onPrimary : colors.onSurface,
               ),
+              checkmarkColor: colors.onPrimary,
             ),
           );
         },
