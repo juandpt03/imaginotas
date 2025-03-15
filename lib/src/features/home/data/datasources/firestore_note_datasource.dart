@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:imaginotas/src/core/core.dart';
 import 'package:imaginotas/src/features/home/data/model/note_model.dart';
-import 'package:imaginotas/src/features/home/domain/datasources/note_datasource.dart';
-import 'package:imaginotas/src/features/home/domain/entities/note.dart';
+import 'package:imaginotas/src/features/home/domain/domain.dart';
 
 class FirestoreNoteDatasource implements NoteDatasource {
   final FirebaseFirestore _firestore;

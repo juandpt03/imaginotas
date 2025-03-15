@@ -1,7 +1,5 @@
 import 'package:imaginotas/src/core/core.dart';
-import 'package:imaginotas/src/features/home/domain/datasources/note_datasource.dart';
-import 'package:imaginotas/src/features/home/domain/entities/note.dart';
-import 'package:imaginotas/src/features/home/domain/repositories/note_repository.dart';
+import 'package:imaginotas/src/features/home/domain/domain.dart';
 
 class NoteRepositoryImpl implements NoteRepository {
   final NoteDatasource _datasource;
