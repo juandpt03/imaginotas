@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imaginotas/src/core/utils/gaps.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/widgets.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;

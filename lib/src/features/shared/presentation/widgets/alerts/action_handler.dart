@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/error/app_exeption.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/widgets.dart';
 
 class ActionHandler {
   static Future<void> closeAction({

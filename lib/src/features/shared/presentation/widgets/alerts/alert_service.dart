@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:imaginotas/src/core/core.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/widgets.dart';
 
 class AlertService {
   static void showSnackbar({

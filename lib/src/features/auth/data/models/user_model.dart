@@ -7,14 +7,11 @@ class UserModel implements UserEntity {
   @override
   final String email;
   @override
-  final String username;
-  @override
   final String password;
 
   const UserModel({
     required this.id,
     required this.email,
-    required this.username,
     required this.password,
   });
 
@@ -22,27 +19,30 @@ class UserModel implements UserEntity {
     return UserModel(
       id: userId,
       email: json["email"] ?? "",
-      username: json["username"] ?? "",
       password: json["password"] ?? "",
     );
   }
 
   factory UserModel.fromFirebaseUser(User user) {
-    return UserModel(
-      id: user.uid,
-      email: user.email ?? "",
-      username: user.displayName ?? "",
-      password: "",
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {"email": email, "username": username, "password": password};
+    return UserModel(id: user.uid, email: user.email ?? "", password: "");
   }
 
   @override
-  List<Object?> get props => [id, email, username, password];
+  List<Object?> get props => [id, email, password];
 
   @override
   bool? get stringify => true;
+
+  @override
+  UserEntity copyWith({
+    final String? id,
+    final String? email,
+    final String? password,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      password: password ?? this.password,
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/widgets.dart';
 
 extension AssetFromString on String {
   Widget toImage({BoxFit fit = BoxFit.contain, double? width, double? height}) {

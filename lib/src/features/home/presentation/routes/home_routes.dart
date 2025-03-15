@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/core.dart';
-import 'package:imaginotas/src/core/router/app_route_path.dart';
-import 'package:imaginotas/src/features/home/presentation/screens/home/home_screen.dart';
+import 'package:imaginotas/src/features/home/presentation/screens/screens.dart';
 
 class HomeRoutes {
   HomeRoutes._();

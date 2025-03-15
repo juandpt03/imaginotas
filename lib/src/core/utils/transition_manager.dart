@@ -7,9 +7,7 @@ class TransitionManager {
 
   TransitionManager._internal();
 
-  factory TransitionManager() {
-    return _instance;
-  }
+  factory TransitionManager() => _instance;
 
   Page<T> slideVerticalTransitionPage<T>({
     required Widget child,

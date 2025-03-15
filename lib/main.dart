@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:imaginotas/src/core/core.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
 
-import 'package:imaginotas/src/core/router/app_route_conf.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
 void main() async {
@@ -15,6 +15,9 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider<LanguageBloc>(create: (context) => LanguageBloc()),
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(authUseCases: DI.sl.get()),
+        ),
       ],
       child: MultiObserver(
         observers: [(context, child) => LanguageObserver(child: child)],

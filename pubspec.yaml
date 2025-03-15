@@ -37,5 +37,5 @@ flutter_intl:
   enabled: true
   class_name: AppLocalizations
   main_locale: en
-  arb_dir: lib/core/config/intl
-  output_dir: lib/core/config/intl
+  arb_dir: lib/src/core/config/intl
+  output_dir: lib/src/core/config/intl

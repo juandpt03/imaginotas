@@ -84,6 +84,116 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Email`
+  String get email {
+    return Intl.message('Email', name: 'email', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Logging in...`
+  String get loggingIn {
+    return Intl.message('Logging in...', name: 'loggingIn', desc: '', args: []);
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Email is required`
+  String get emailIsRequired {
+    return Intl.message(
+      'Email is required',
+      name: 'emailIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email address`
+  String get invalidEmailAddress {
+    return Intl.message(
+      'Invalid email address',
+      name: 'invalidEmailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordIsRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters`
+  String get passwordMustBeAtLeast8Characters {
+    return Intl.message(
+      'Password must be at least 8 characters',
+      name: 'passwordMustBeAtLeast8Characters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Include letter and number`
+  String get includeLetterAndNumber {
+    return Intl.message(
+      'Include letter and number',
+      name: 'includeLetterAndNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message('Loading...', name: 'loading', desc: '', args: []);
+  }
+
+  /// `Login here`
+  String get loginHere {
+    return Intl.message('Login here', name: 'loginHere', desc: '', args: []);
+  }
+
+  /// `Welcome back you have been missed!`
+  String get welcomeBackYouHaveBeenMissed {
+    return Intl.message(
+      'Welcome back you have been missed!',
+      name: 'welcomeBackYouHaveBeenMissed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a new account`
+  String get createANewAccount {
+    return Intl.message(
+      'Create a new account',
+      name: 'createANewAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

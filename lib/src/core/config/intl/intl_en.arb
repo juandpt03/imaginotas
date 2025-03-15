@@ -1,0 +1,20 @@
+{
+  "success": "Success",
+  "error": "Error",
+  "anUnknownErrorOccurred": "An unknown error occurred",
+  "unexpectedNullValue": "Unexpected null value",
+  "email": "Email",
+  "password": "Password",
+  "loggingIn": "Logging in...",
+  "login": "Login",
+  "emailIsRequired": "Email is required",
+  "invalidEmailAddress": "Invalid email address",
+  "passwordIsRequired": "Password is required",
+  "passwordMustBeAtLeast8Characters": "Password must be at least 8 characters",
+  "includeLetterAndNumber": "Include letter and number",
+  "loading": "Loading...",
+  "loginHere": "Login here",
+  "welcomeBackYouHaveBeenMissed": "Welcome back you have been missed!",
+  "forgotPassword": "Forgot password?",
+  "createANewAccount": "Create a new account"
+}

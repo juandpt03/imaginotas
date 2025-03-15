@@ -1,5 +1,7 @@
 enum AppRoute {
   splash(path: '/splash'),
+  login(path: '/login'),
+  register(path: '/register'),
   home(path: '/home'),
   assistance(path: '/note', parent: AppRoute.home);
 

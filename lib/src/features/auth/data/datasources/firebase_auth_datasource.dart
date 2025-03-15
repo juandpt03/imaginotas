@@ -15,7 +15,7 @@ class FirebaseAuthDatasource implements AuthDatasource {
   }) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
-        email: user.username,
+        email: user.email,
         password: user.password,
       );
 
@@ -36,7 +36,7 @@ class FirebaseAuthDatasource implements AuthDatasource {
   }) async {
     try {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: user.username,
+        email: user.email,
         password: user.password,
       );
 

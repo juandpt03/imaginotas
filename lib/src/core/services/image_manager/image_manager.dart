@@ -10,6 +10,7 @@ class ImageManager {
 class AppIcons {
   const AppIcons();
 
+  String get logo => ImageManager.path('icons/logo.png');
   String get backArrow => ImageManager.path('icons/back-arrow.svg');
   String get rightArrow => ImageManager.path('icons/right-arrow.svg');
   String get delete => ImageManager.path('icons/delete.svg');

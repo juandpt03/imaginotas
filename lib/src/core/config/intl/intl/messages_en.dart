@@ -25,10 +25,38 @@ class MessageLookup extends MessageLookupByLibrary {
     "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
       "An unknown error occurred",
     ),
+    "createANewAccount": MessageLookupByLibrary.simpleMessage(
+      "Create a new account",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Email is required",
+    ),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+    "includeLetterAndNumber": MessageLookupByLibrary.simpleMessage(
+      "Include letter and number",
+    ),
+    "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
+      "Invalid email address",
+    ),
+    "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "loggingIn": MessageLookupByLibrary.simpleMessage("Logging in..."),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginHere": MessageLookupByLibrary.simpleMessage("Login here"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
+    "passwordMustBeAtLeast8Characters": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 8 characters",
+    ),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "unexpectedNullValue": MessageLookupByLibrary.simpleMessage(
       "Unexpected null value",
+    ),
+    "welcomeBackYouHaveBeenMissed": MessageLookupByLibrary.simpleMessage(
+      "Welcome back you have been missed!",
     ),
   };
 }

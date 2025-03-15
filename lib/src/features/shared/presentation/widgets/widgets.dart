@@ -3,5 +3,8 @@ export 'package:imaginotas/src/features/shared/presentation/widgets/alerts/actio
 export 'package:imaginotas/src/features/shared/presentation/widgets/alerts/custom_snackbar.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/alerts/custom_toast.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/buttons/custom_elevated_button.dart';
+export 'package:imaginotas/src/features/shared/presentation/widgets/buttons/custom_gradient_button.dart';
+export 'package:imaginotas/src/features/shared/presentation/widgets/buttons/custom_text_button.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/loadings/custom_loading.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/layout/gap.dart';
+export 'package:imaginotas/src/features/shared/presentation/widgets/forms/custom_text_form_field.dart';

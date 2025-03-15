@@ -1,6 +1,0 @@
-{
-  "success": "Success",
-  "error": "Error",
-  "anUnknownErrorOccurred": "An unknown error occurred",
-  "unexpectedNullValue": "Unexpected null value"
-}

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:imaginotas/src/core/core.dart';
@@ -16,6 +17,7 @@ class DI {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    sl.registerLazySingleton(() => FirebaseAuth.instance);
     sl.registerLazySingleton(() => AppRouteConf());
 
     sl.registerLazySingleton(() => AppTheme());
