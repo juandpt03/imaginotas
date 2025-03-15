@@ -20,5 +20,6 @@ class DI {
     sl.registerLazySingleton(() => FirebaseAuth.instance);
     sl.registerLazySingleton(() => AppTheme());
     AuthDepedency.init();
+    HomeDependency.init();
   }
 }
