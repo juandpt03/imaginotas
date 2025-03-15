@@ -7,7 +7,7 @@ class RouteGuard {
     AuthUnauthenticated: [
       AppRoute.login.fullPath,
       AppRoute.register.fullPath,
-      
+      AppRoute.resetPassword.fullPath,
     ],
     AuthAuthenticated: [AppRoute.home.fullPath, AppRoute.note.fullPath],
   };

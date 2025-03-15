@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToDeleteThisNoteThis": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete this note? This action cannot be undone.",
     ),
+    "backToLogin": MessageLookupByLibrary.simpleMessage("Back to login"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "categoryMustBeAtLeast2Characters": MessageLookupByLibrary.simpleMessage(
       "Category must be at least 2 characters",
@@ -66,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "Email is required",
+    ),
+    "enterYourEmailToResetYourPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter your email to reset your password",
     ),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
     "fillInYourDetailsToCreateAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -102,9 +106,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords do not match",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "resetPasswordLinkSentTo": MessageLookupByLibrary.simpleMessage(
+      "Reset password link sent to",
+    ),
     "saveNote": MessageLookupByLibrary.simpleMessage("Save Note"),
     "saving": MessageLookupByLibrary.simpleMessage("Saving..."),
     "searchNotes": MessageLookupByLibrary.simpleMessage("Search notes..."),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage("Send reset link"),
+    "sendingResetLink": MessageLookupByLibrary.simpleMessage(
+      "Sending reset link...",
+    ),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "title": MessageLookupByLibrary.simpleMessage("Title"),
     "titleIsRequired": MessageLookupByLibrary.simpleMessage(

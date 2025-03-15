@@ -18,6 +18,11 @@ final class AuthLogoutRequested extends AuthEvent {
   const AuthLogoutRequested();
 }
 
+final class AuthResetPasswordRequested extends AuthEvent {
+  final String email;
+  const AuthResetPasswordRequested({required this.email});
+}
+
 final class AuthCheckStatusRequested extends AuthEvent {}
 
 final class AuthStateChanged extends AuthEvent {

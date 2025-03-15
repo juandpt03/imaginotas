@@ -13,6 +13,9 @@ class AuthUseCases {
     required UserEntity user,
   }) => authRepository.register(user: user);
 
+  Future<Either<AppException, void>> resetPassword({required String email}) =>
+      authRepository.resetPassword(email: email);
+
   Future<Either<AppException, void>> logout() => authRepository.logout();
 
   UserEntity? get currentUser => authRepository.currentUser;

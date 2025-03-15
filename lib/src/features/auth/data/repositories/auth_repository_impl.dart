@@ -25,4 +25,9 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<Either<AppException<Exception>, void>> logout() => datasource.logout();
+
+  @override
+  Future<Either<AppException<Exception>, void>> resetPassword({
+    required String email,
+  }) => datasource.resetPassword(email: email);
 }

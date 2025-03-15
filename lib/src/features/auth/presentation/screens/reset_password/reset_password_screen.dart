@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/core.dart';
-import 'package:imaginotas/src/features/auth/presentation/bloc/blocs.dart';
-import 'package:imaginotas/src/features/auth/presentation/screens/login/widgets/widgets.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/reset_password/reset_password_bloc.dart';
 import 'package:imaginotas/src/features/auth/presentation/validators/auth_validators.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -26,18 +28,35 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final textStyle = Theme.of(context).textTheme;
 
     return BlocProvider(
-      create: (context) => LoginBloc(login: context.read<AuthBloc>().login),
-      child: BlocBuilder<LoginBloc, LoginState>(
+      create:
+          (context) => ResetPasswordBloc(
+            resetPassword:
+                (email) => context.read<AuthBloc>().resetPassword(email),
+          ),
+      child: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
+        listener: (context, state) {
+          if (state.isSubmitted) {
+            AlertService.showToast(
+              context: context,
+              description:
+                  '${AppLocalizations.of(context).resetPasswordLinkSentTo}${state.email}',
+              success: true,
+            );
+            context.pop();
+          }
+        },
         builder: (context, state) {
           return Scaffold(
+            appBar: CustomAppBar(
+              title: AppLocalizations.of(context).resetPassword,
+              showLeading: false,
+            ),
             body: SafeArea(
               child: GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
@@ -48,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          AppLocalizations.of(context).loginHere,
+                          AppLocalizations.of(context).forgotPassword,
                           style: textStyle.displaySmall?.copyWith(
                             color: colors.primary,
                           ),
@@ -58,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           AppLocalizations.of(
                             context,
-                          ).welcomeBackYouHaveBeenMissed,
+                          ).enterYourEmailToResetYourPassword,
                           style: textStyle.titleMedium?.copyWith(
                             color: colors.outline,
                             fontWeight: FontWeight.bold,
@@ -74,73 +93,41 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               CustomTextFormField(
                                 onChanged:
-                                    context.read<LoginBloc>().onEmailChanged,
+                                    context
+                                        .read<ResetPasswordBloc>()
+                                        .onEmailChanged,
                                 hintText: AppLocalizations.of(context).email,
-                                keyboardType: TextInputType.number,
-                                suffixIcon: const Icon(Icons.alternate_email),
+                                keyboardType: TextInputType.emailAddress,
+                                suffixIcon: const Icon(Icons.email),
                                 validator: AuthValidators.validateEmail,
                               ),
-                              CustomTextFormField(
-                                onChanged:
-                                    context.read<LoginBloc>().onPasswordChanged,
-                                hintText: AppLocalizations.of(context).password,
-                                keyboardType: TextInputType.visiblePassword,
-                                obscureText: !state.isPasswordVisible,
-                                suffixIcon: PasswordIcon(
-                                  isVisible: state.isPasswordVisible,
-                                  onToggle:
-                                      context
-                                          .read<LoginBloc>()
-                                          .onTogglePasswordVisibility,
-                                ),
-                                validator: AuthValidators.validatePassword,
-                              ),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: CustomTextButton(
-                                  text:
-                                      AppLocalizations.of(
-                                        context,
-                                      ).forgotPassword,
-                                  onPressed:
-                                      () => context.pushNamed(
-                                        AppRoute.resetPassword.name,
-                                      ),
-                                  style: textStyle.bodyMedium?.copyWith(
-                                    color: colors.outline,
-                                  ),
-                                ),
-                              ),
-
+                              const GapY.medium(),
                               CustomGradientButton(
                                 isExpanded: true,
                                 loadingText:
-                                    AppLocalizations.of(context).loggingIn,
-                                isLoading: state.isLoading,
-                                onPressed: () {
-                                  final validate =
-                                      _formKey.currentState?.validate() ??
-                                      false;
-                                  if (validate) {
-                                    context.read<LoginBloc>().onSubmitForm();
-                                  }
-                                },
-                                text: AppLocalizations.of(context).login,
-                              ),
-
-                              CustomTextButton(
-                                text:
                                     AppLocalizations.of(
                                       context,
-                                    ).createANewAccount,
+                                    ).sendingResetLink,
+                                isLoading: state.isLoading,
+                                onPressed: () {
+                                  if (_formKey.currentState?.validate() ??
+                                      false) {
+                                    context
+                                        .read<ResetPasswordBloc>()
+                                        .onSubmitForm();
+                                  }
+                                },
+                                text:
+                                    AppLocalizations.of(context).sendResetLink,
+                              ),
+                              const GapY.medium(),
+                              CustomTextButton(
+                                text: AppLocalizations.of(context).backToLogin,
                                 style: textStyle.bodyMedium?.copyWith(
                                   color: colors.outline,
                                 ),
-
                                 onPressed:
-                                    () => context.pushNamed(
-                                      AppRoute.register.name,
-                                    ),
+                                    () => context.goNamed(AppRoute.login.name),
                               ),
                             ],
                           ),

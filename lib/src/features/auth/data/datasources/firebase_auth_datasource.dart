@@ -75,4 +75,18 @@ class FirebaseAuthDatasource implements AuthDatasource {
       return Either.left(AppException.fromMessage(e.toString()));
     }
   }
+
+  @override
+  Future<Either<AppException<Exception>, void>> resetPassword({
+    required String email,
+  }) async {
+    try {
+      final response = _firebaseAuth.sendPasswordResetEmail(email: email);
+      return Either.right(response);
+    } on FirebaseAuthException catch (e) {
+      return Either.left(AppException.fromMessage(e.message));
+    } catch (e) {
+      return Either.left(AppException.fromMessage(e.toString()));
+    }
+  }
 }

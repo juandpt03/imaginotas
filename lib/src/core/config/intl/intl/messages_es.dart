@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToDeleteThisNoteThis": MessageLookupByLibrary.simpleMessage(
       "¿Estás seguro de que quieres eliminar esta nota? Esta acción no se puede deshacer.",
     ),
+    "backToLogin": MessageLookupByLibrary.simpleMessage(
+      "Volver a inicio de sesión",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "categoryMustBeAtLeast2Characters": MessageLookupByLibrary.simpleMessage(
       "La categoría debe tener al menos 2 caracteres",
@@ -68,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "El correo electrónico es obligatorio",
+    ),
+    "enterYourEmailToResetYourPassword": MessageLookupByLibrary.simpleMessage(
+      "Ingresa tu correo electrónico para restablecer tu contraseña",
     ),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
     "fillInYourDetailsToCreateAnAccount": MessageLookupByLibrary.simpleMessage(
@@ -106,9 +112,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Las contraseñas no coinciden",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Registrarse"),
+    "resetPassword": MessageLookupByLibrary.simpleMessage(
+      "Restablecer Contraseña",
+    ),
+    "resetPasswordLinkSentTo": MessageLookupByLibrary.simpleMessage(
+      "Enlace para restablecer contraseña enviado a",
+    ),
     "saveNote": MessageLookupByLibrary.simpleMessage("Guardar nota"),
     "saving": MessageLookupByLibrary.simpleMessage("Guardando..."),
     "searchNotes": MessageLookupByLibrary.simpleMessage("Buscar notas..."),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage("Enviar enlace"),
+    "sendingResetLink": MessageLookupByLibrary.simpleMessage(
+      "Enviando enlace de restablecimiento...",
+    ),
     "success": MessageLookupByLibrary.simpleMessage("Éxito"),
     "title": MessageLookupByLibrary.simpleMessage("Título"),
     "titleIsRequired": MessageLookupByLibrary.simpleMessage(

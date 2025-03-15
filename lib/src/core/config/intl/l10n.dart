@@ -444,6 +444,66 @@ class AppLocalizations {
   String get all {
     return Intl.message('All', name: 'all', desc: '', args: []);
   }
+
+  /// `Reset password link sent to`
+  String get resetPasswordLinkSentTo {
+    return Intl.message(
+      'Reset password link sent to',
+      name: 'resetPasswordLinkSentTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email to reset your password`
+  String get enterYourEmailToResetYourPassword {
+    return Intl.message(
+      'Enter your email to reset your password',
+      name: 'enterYourEmailToResetYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sending reset link...`
+  String get sendingResetLink {
+    return Intl.message(
+      'Sending reset link...',
+      name: 'sendingResetLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send reset link`
+  String get sendResetLink {
+    return Intl.message(
+      'Send reset link',
+      name: 'sendResetLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to login`
+  String get backToLogin {
+    return Intl.message(
+      'Back to login',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

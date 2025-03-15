@@ -8,3 +8,4 @@ export 'package:imaginotas/src/features/shared/presentation/widgets/buttons/cust
 export 'package:imaginotas/src/features/shared/presentation/widgets/loadings/custom_loading.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/layout/gap.dart';
 export 'package:imaginotas/src/features/shared/presentation/widgets/forms/custom_text_form_field.dart';
+export 'package:imaginotas/src/features/shared/presentation/widgets/app_bar/custom_app_bar.dart';

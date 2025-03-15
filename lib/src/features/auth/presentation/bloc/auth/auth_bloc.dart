@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _eventHandlers() {
     on<AuthLoginRequested>(_onLoginRequested);
     on<AuthRegisterRequested>(_onRegisterRequested);
+    on<AuthResetPasswordRequested>(_onResetPasswordRequested);
     on<AuthCheckStatusRequested>(_onCheckStatusRequested);
     on<AuthStateChanged>(_onAuthStateChanged);
     on<AuthLogoutRequested>(_onLogoutRequested);
@@ -77,6 +78,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
+  Future<void> _onResetPasswordRequested(
+    AuthResetPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    final result = await _authUseCases.resetPassword(email: event.email);
+
+    result.when(
+      left: (exception) => emit(AuthError(exception)),
+      right: (_) => null,
+    );
+  }
+
   Future<void> _onLogoutRequested(
     AuthLogoutRequested event,
     Emitter<AuthState> emit,
@@ -95,6 +108,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void register(UserEntity user) => add(AuthRegisterRequested(user: user));
 
   void logout() => add(AuthLogoutRequested());
+
+  void resetPassword(String email) =>
+      add(AuthResetPasswordRequested(email: email));
 
   void splashComplete() {
     _isSplashComplete = true;

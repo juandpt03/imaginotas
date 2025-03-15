@@ -34,6 +34,16 @@ class AuthRoutes {
               child: const RegisterScreen(),
             ),
       ),
+
+      GoRoute(
+        path: AppRoute.resetPassword.path,
+        name: AppRoute.resetPassword.name,
+        pageBuilder:
+            (context, state) => transitionManager.slideTransition(
+              state: state,
+              child: const ResetPasswordScreen(),
+            ),
+      ),
     ];
   }
 }
