@@ -24,3 +24,7 @@ final class AuthStateChanged extends AuthEvent {
   final UserEntity? user;
   const AuthStateChanged(this.user);
 }
+
+final class AuthSplashCompleted extends AuthEvent {
+  const AuthSplashCompleted();
+}

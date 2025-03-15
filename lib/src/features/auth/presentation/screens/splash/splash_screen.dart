@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imaginotas/src/core/core.dart';
+import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(seconds: 1),
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
@@ -36,10 +37,11 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 1));
-
-    if (!mounted) return;
-    context.goNamed(AppRoute.home.name);
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        context.read<AuthBloc>().splashComplete();
+      }
+    });
   }
 
   @override

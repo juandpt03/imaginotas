@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/router/route_guard.dart';
@@ -15,10 +18,25 @@ class AppRouter {
     debugLogDiagnostics: true,
     routes: [...AuthRoutes().getRoutes(), ...HomeRoutes.getRoutes()],
     redirect: (context, state) {
-      final authState = context.read<AuthBloc>().state;
+      final authState = context.watch<AuthBloc>().state;
       final isGoingTo = state.matchedLocation;
       final redirectPath = RouteGuard.guard(isGoingTo, authState);
       return redirectPath;
     },
   );
+
+  AppRouter();
+}
+
+class StreamToListenable extends ChangeNotifier {
+  StreamToListenable(Stream stream) {
+    _subscription = stream.listen((_) => notifyListeners());
+  }
+  late final StreamSubscription _subscription;
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
 }

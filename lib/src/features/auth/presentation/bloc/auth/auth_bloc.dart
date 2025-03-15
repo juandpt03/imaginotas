@@ -12,6 +12,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUseCases _authUseCases;
   late final StreamSubscription<UserEntity?> _authStateSubscription;
+  bool _isSplashComplete = false;
 
   AuthBloc({required AuthUseCases authUseCases})
     : _authUseCases = authUseCases,
@@ -99,9 +100,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void logout() => add(AuthLogoutRequested());
 
-  void _checkStatus() => add(AuthCheckStatusRequested());
+  void splashComplete() {
+    _isSplashComplete = true;
+    add(AuthCheckStatusRequested());
+  }
+
+  void _checkStatus() {
+    if (!_isSplashComplete) return;
+    add(AuthCheckStatusRequested());
+  }
 
   void _subscribeToAuthChanges() {
+    if (!_isSplashComplete) return;
     _authStateSubscription = _authUseCases.authStateChanges.listen(
       (user) => add(AuthStateChanged(user)),
     );
