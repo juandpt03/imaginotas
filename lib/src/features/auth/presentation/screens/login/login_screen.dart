@@ -14,6 +14,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AuthBloc>().stream.listen((state) {
+      if (!mounted) return;
+      if (state is AuthError) {
+        ActionHandler.onException(context: context, exception: state.error);
+      }
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   @override

@@ -24,7 +24,7 @@ class FirebaseAuthDatasource implements AuthDatasource {
 
       return Either.right(UserModel.fromFirebaseUser(firebaseUser));
     } on FirebaseAuthException catch (e) {
-      return Either.left(AppException.fromException(e));
+      return Either.left(AppException.fromMessage(e.message));
     } catch (e) {
       return Either.left(AppException.fromMessage(e.toString()));
     }

@@ -11,6 +11,6 @@ export 'package:imaginotas/src/core/extensions/assets_from_string.dart';
 export 'package:imaginotas/src/core/services/image_manager/image_manager.dart';
 export 'package:imaginotas/src/core/services/firebase/firebase_options.dart';
 export 'package:imaginotas/src/core/functional/either.dart';
-export 'package:imaginotas/src/core/router/app_route_path.dart';
-export 'package:imaginotas/src/core/router/app_route_conf.dart';
+export 'package:imaginotas/src/core/router/app_route.dart';
+export 'package:imaginotas/src/core/router/app_router.dart';
 export 'package:imaginotas/src/core/config/intl/l10n.dart';

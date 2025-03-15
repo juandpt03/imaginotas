@@ -18,7 +18,7 @@ class DI {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     sl.registerLazySingleton(() => FirebaseAuth.instance);
-    sl.registerLazySingleton(() => AppRouteConf());
+    sl.registerLazySingleton(() => AppRouter());
 
     sl.registerLazySingleton(() => AppTheme());
     AuthDepedency.init();

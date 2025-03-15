@@ -20,9 +20,9 @@ final class AuthAuthenticated extends AuthState {
 
 final class AuthUnauthenticated extends AuthState {}
 
-final class AuthFailure extends AuthState {
+final class AuthError extends AuthState {
   final AppException error;
-  const AuthFailure(this.error);
+  const AuthError(this.error);
   @override
   List<Object> get props => [error];
 }

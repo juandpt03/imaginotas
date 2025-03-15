@@ -2,9 +2,9 @@ import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/features/auth/presentation/routes/auth_routes.dart';
 import 'package:imaginotas/src/features/home/presentation/routes/home_routes.dart';
 
-import 'app_route_path.dart';
+import 'app_route.dart';
 
-class AppRouteConf {
+class AppRouter {
   GoRouter get router => _router;
 
   late final _router = GoRouter(

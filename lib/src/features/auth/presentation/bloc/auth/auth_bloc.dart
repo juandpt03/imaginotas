@@ -26,7 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _authUseCases.login(user: event.user);
 
     result.when(
-      left: (exception) => emit(AuthFailure(exception)),
+      left: (exception) => emit(AuthError(exception)),
       right: (user) => emit(AuthAuthenticated(user)),
     );
   }
@@ -40,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _authUseCases.register(user: event.user);
 
     result.when(
-      left: (exception) => emit(AuthFailure(exception)),
+      left: (exception) => emit(AuthError(exception)),
       right: (user) => emit(AuthAuthenticated(user)),
     );
   }
