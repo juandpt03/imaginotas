@@ -8,6 +8,15 @@ class AuthRoutes {
     final transitionManager = TransitionManager();
     return [
       GoRoute(
+        path: AppRoute.splash.path,
+        name: AppRoute.splash.name,
+        pageBuilder:
+            (context, state) => transitionManager.scaleFadeTransitionPage(
+              state: state,
+              child: const SplashScreen(),
+            ),
+      ),
+      GoRoute(
         path: AppRoute.login.path,
         name: AppRoute.login.name,
         pageBuilder:
