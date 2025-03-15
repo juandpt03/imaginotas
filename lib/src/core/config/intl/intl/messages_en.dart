@@ -28,6 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
       "An unknown error occurred",
     ),
+    "areYouSureYouWantToDeleteThisNote": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this note?",
+    ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "categoryMustBeAtLeast2Characters": MessageLookupByLibrary.simpleMessage(
       "Category must be at least 2 characters",
     ),
@@ -48,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "creatingAccount": MessageLookupByLibrary.simpleMessage(
       "Creating account...",
     ),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deleteNote": MessageLookupByLibrary.simpleMessage("Delete Note"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "Email is required",

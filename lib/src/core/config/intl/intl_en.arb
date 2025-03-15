@@ -31,5 +31,9 @@
   "titleIsRequired": "Title is required",
   "titleMustBeAtLeast3Characters": "Title must be at least 3 characters",
   "contentIsRequired": "Content is required",
-  "categoryMustBeAtLeast2Characters": "Category must be at least 2 characters"
+  "categoryMustBeAtLeast2Characters": "Category must be at least 2 characters",
+  "deleteNote": "Delete Note",
+  "areYouSureYouWantToDeleteThisNote": "Are you sure you want to delete this note?",
+  "cancel": "Cancel",
+  "delete": "Delete"
 }

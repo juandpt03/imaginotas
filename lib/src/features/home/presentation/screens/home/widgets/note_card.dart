@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imaginotas/src/core/core.dart';
 import 'package:imaginotas/src/features/home/domain/domain.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -51,14 +52,20 @@ class NoteCard extends StatelessWidget {
                         context: context,
                         builder:
                             (context) => AlertDialog(
-                              title: Text('Delete Note'),
+                              title: Text(
+                                AppLocalizations.of(context).deleteNote,
+                              ),
                               content: Text(
-                                'Are you sure you want to delete this note?',
+                                AppLocalizations.of(
+                                  context,
+                                ).areYouSureYouWantToDeleteThisNote,
                               ),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text('Cancel'),
+                                  child: Text(
+                                    AppLocalizations.of(context).cancel,
+                                  ),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -66,7 +73,7 @@ class NoteCard extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                   child: Text(
-                                    'Delete',
+                                    AppLocalizations.of(context).delete,
                                     style: TextStyle(color: colors.error),
                                   ),
                                 ),
