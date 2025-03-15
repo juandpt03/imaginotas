@@ -28,13 +28,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
       "An unknown error occurred",
     ),
+    "categoryMustBeAtLeast2Characters": MessageLookupByLibrary.simpleMessage(
+      "Category must be at least 2 characters",
+    ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmPasswordIsRequired": MessageLookupByLibrary.simpleMessage(
       "Confirm password is required",
     ),
+    "contentIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Content is required",
+    ),
     "createANewAccount": MessageLookupByLibrary.simpleMessage(
       "Create a new account",
     ),
+    "createYourFirstNoteByTappingTheButtonBelow":
+        MessageLookupByLibrary.simpleMessage(
+          "Create your first note by tapping the button below.",
+        ),
     "creatingAccount": MessageLookupByLibrary.simpleMessage(
       "Creating account...",
     ),
@@ -57,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "loggingIn": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginHere": MessageLookupByLibrary.simpleMessage("Login here"),
+    "myNotes": MessageLookupByLibrary.simpleMessage("My notes"),
+    "noNotesYet": MessageLookupByLibrary.simpleMessage("No notes yet"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordIsRequired": MessageLookupByLibrary.simpleMessage(
       "Password is required",
@@ -68,7 +80,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords do not match",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "searchNotes": MessageLookupByLibrary.simpleMessage("Search notes..."),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "titleIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Title is required",
+    ),
+    "titleMustBeAtLeast3Characters": MessageLookupByLibrary.simpleMessage(
+      "Title must be at least 3 characters",
+    ),
     "unexpectedNullValue": MessageLookupByLibrary.simpleMessage(
       "Unexpected null value",
     ),

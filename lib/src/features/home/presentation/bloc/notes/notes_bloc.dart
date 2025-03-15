@@ -11,12 +11,12 @@ part 'notes_state.dart';
 
 class NotesBloc extends Bloc<NotesEvent, NotesState> {
   final NoteUseCases _noteUseCases;
-  final UserEntity _currentUser;
+  final UserEntity? _currentUser;
   StreamSubscription<List<NoteEntity>>? _notesSubscription;
 
   NotesBloc({
     required NoteUseCases noteUseCases,
-    required UserEntity currentUser,
+    required UserEntity? currentUser,
   }) : _noteUseCases = noteUseCases,
        _currentUser = currentUser,
        super(const NotesLoading()) {
@@ -177,8 +177,8 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
   }
 
   void loadNotes() {
-    final userId = _currentUser.id;
-    if (userId.isEmpty) return;
+    final userId = _currentUser?.id;
+    if (userId == null) return;
     add(LoadNotes(userId: userId));
   }
 
@@ -190,7 +190,10 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
   void filterByCategory(String userId, String category) =>
       add(FilterByCategory(userId: userId, category: category));
   void clearFilter() => add(ClearFilter());
-  void searchNotes(String userId, String query) =>
-      add(SearchNotes(userId: userId, query: query));
+  void searchNotes(String? userId, String query) {
+    if (userId == null) return;
+    add(SearchNotes(userId: userId, query: query));
+  }
+
   void deleteNote(String noteId) => add(DeleteNote(noteId: noteId));
 }

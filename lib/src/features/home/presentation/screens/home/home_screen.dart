@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:imaginotas/src/core/core.dart';
+import 'package:imaginotas/src/features/auth/domain/domain.dart';
 import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/notes/notes_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/screens/home/widgets/widgets.dart';
+import 'package:imaginotas/src/features/shared/presentation/widgets/app_bar/custom_app_bar.dart';
 
 import 'package:imaginotas/src/features/shared/shared.dart';
 
@@ -16,12 +18,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final UserEntity? _currentUser;
   late final TextEditingController _searchController;
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+
+    _currentUser = context.read<AuthBloc>().state.user;
   }
 
   @override
@@ -32,13 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return BlocProvider<NotesBloc>(
       create:
-          (context) => NotesBloc(
-            noteUseCases: DI.sl.get(),
-            currentUser:
-                (context.read<AuthBloc>().state as AuthAuthenticated).user,
-          ),
+          (context) =>
+              NotesBloc(noteUseCases: DI.sl.get(), currentUser: _currentUser),
 
       child: BlocConsumer<NotesBloc, NotesState>(
         listener: (context, state) {
@@ -48,11 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(
-              title: Text('My Notes'),
+            appBar: CustomAppBar(
+              showLeading: false,
+              title: AppLocalizations.of(context).myNotes,
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.logout),
+                  icon: ImageManager.icons.logout.toSvg(),
                   onPressed: () => context.read<AuthBloc>().logout(),
                 ),
               ],
@@ -63,19 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(Gaps.paddingMedium),
                   child: CustomSearchBar(
                     controller: _searchController,
-                    onSearch: (query) {
-                      final userId =
-                          context.read<AuthBloc>().state is AuthAuthenticated
-                              ? (context.read<AuthBloc>().state
-                                      as AuthAuthenticated)
-                                  .user
-                                  .id
-                              : '';
-                      if (userId.isNotEmpty) {
-                        context.read<NotesBloc>().searchNotes(userId, query);
-                      }
-                    },
-                    hintText: 'Search notes...',
+                    onSearch:
+                        (query) => context.read<NotesBloc>().searchNotes(
+                          _currentUser?.id,
+                          query,
+                        ),
+                    hintText: AppLocalizations.of(context).searchNotes,
                   ),
                 ),
 
@@ -104,6 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             floatingActionButton: FloatingActionButton(
+              shape: CircleBorder(),
+              foregroundColor: colors.onPrimary,
+              backgroundColor: colors.primary,
+
               onPressed: () => context.pushNamed(AppRoute.note.name),
               child: const Icon(Icons.add),
             ),
@@ -114,6 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNotesList(NotesState state) {
+    final colors = Theme.of(context).colorScheme;
+    final textStyle = Theme.of(context).textTheme;
     if (state is NotesLoading) {
       return const CustomLoading();
     }
@@ -124,20 +127,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.note_alt_outlined,
-                size: 64,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              Icon(Icons.note_alt_outlined, size: 64, color: colors.primary),
               const GapY.medium(),
               Text(
-                'No notes yet',
-                style: Theme.of(context).textTheme.titleLarge,
+                AppLocalizations.of(context).noNotesYet,
+                style: textStyle.titleLarge,
               ),
               const GapY.small(),
               Text(
-                'Create your first note by tapping the button below.',
-                style: Theme.of(context).textTheme.bodyMedium,
+                AppLocalizations.of(
+                  context,
+                ).createYourFirstNoteByTappingTheButtonBelow,
+                style: textStyle.bodyMedium,
               ),
             ],
           ),

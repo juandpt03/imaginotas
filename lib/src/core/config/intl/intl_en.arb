@@ -23,5 +23,13 @@
   "passwordsDoNotMatch": "Passwords do not match",
   "register": "Register",
   "creatingAccount": "Creating account...",
-  "alreadyHaveAnAccountLogin": "Already have an account? Login"
+  "alreadyHaveAnAccountLogin": "Already have an account? Login",
+  "myNotes": "My notes",
+  "searchNotes": "Search notes...",
+  "noNotesYet": "No notes yet",
+  "createYourFirstNoteByTappingTheButtonBelow": "Create your first note by tapping the button below.",
+  "titleIsRequired": "Title is required",
+  "titleMustBeAtLeast3Characters": "Title must be at least 3 characters",
+  "contentIsRequired": "Content is required",
+  "categoryMustBeAtLeast2Characters": "Category must be at least 2 characters"
 }

@@ -24,6 +24,7 @@ class AppIcons {
   String get image => ImageManager.path('icons/image.svg');
   String get avatar => ImageManager.path('icons/avatar.svg');
   String get visibility => ImageManager.path('icons/visibility.svg');
+  String get logout => ImageManager.path('icons/logout.svg');
 }
 
 class Illustrations {

@@ -6,7 +6,7 @@ import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.da
 import 'package:imaginotas/src/features/home/domain/entities/note.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/note/note_form_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/notes/notes_bloc.dart';
-import 'package:imaginotas/src/features/home/presentation/validators/note_validators.dart';
+import 'package:imaginotas/src/features/home/presentation/validators/home_validators.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
 class NoteView extends StatefulWidget {
@@ -106,7 +106,7 @@ class _NoteViewState extends State<NoteView> {
                               CustomTextFormField(
                                 controller: _titleController,
                                 hintText: 'Title',
-                                validator: NoteValidators.validateTitle,
+                                validator: HomeValidators.validateTitle,
                                 onChanged: (value) {
                                   _formBloc.onTitleChanged(value);
                                 },
@@ -117,7 +117,7 @@ class _NoteViewState extends State<NoteView> {
                               CustomTextFormField(
                                 controller: _categoryController,
                                 hintText: 'Category (optional)',
-                                validator: NoteValidators.validateCategory,
+                                validator: HomeValidators.validateCategory,
                                 onChanged: (value) {
                                   _formBloc.onCategoryChanged(value);
                                 },
@@ -130,7 +130,7 @@ class _NoteViewState extends State<NoteView> {
                                 hintText: 'Note content',
                                 maxLines: 10,
                                 keyboardType: TextInputType.multiline,
-                                validator: NoteValidators.validateContent,
+                                validator: HomeValidators.validateContent,
                                 onChanged: (value) {
                                   _formBloc.onContentChanged(value);
                                 },

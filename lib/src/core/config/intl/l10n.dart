@@ -259,6 +259,76 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `My notes`
+  String get myNotes {
+    return Intl.message('My notes', name: 'myNotes', desc: '', args: []);
+  }
+
+  /// `Search notes...`
+  String get searchNotes {
+    return Intl.message(
+      'Search notes...',
+      name: 'searchNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notes yet`
+  String get noNotesYet {
+    return Intl.message('No notes yet', name: 'noNotesYet', desc: '', args: []);
+  }
+
+  /// `Create your first note by tapping the button below.`
+  String get createYourFirstNoteByTappingTheButtonBelow {
+    return Intl.message(
+      'Create your first note by tapping the button below.',
+      name: 'createYourFirstNoteByTappingTheButtonBelow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title is required`
+  String get titleIsRequired {
+    return Intl.message(
+      'Title is required',
+      name: 'titleIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title must be at least 3 characters`
+  String get titleMustBeAtLeast3Characters {
+    return Intl.message(
+      'Title must be at least 3 characters',
+      name: 'titleMustBeAtLeast3Characters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Content is required`
+  String get contentIsRequired {
+    return Intl.message(
+      'Content is required',
+      name: 'contentIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category must be at least 2 characters`
+  String get categoryMustBeAtLeast2Characters {
+    return Intl.message(
+      'Category must be at least 2 characters',
+      name: 'categoryMustBeAtLeast2Characters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

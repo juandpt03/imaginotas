@@ -26,3 +26,12 @@ final class AuthError extends AuthState {
   @override
   List<Object> get props => [error];
 }
+
+extension AuthStateX on AuthState {
+  UserEntity? get user {
+    if (this is AuthAuthenticated) {
+      return (this as AuthAuthenticated).user;
+    }
+    return null;
+  }
+}

@@ -73,7 +73,7 @@ class FirestoreNoteDatasource implements NoteDatasource {
       final doc = await _notesCollection.doc(noteId).get();
 
       if (!doc.exists) {
-        return Either.left(AppException.fromMessage('Note not found'));
+        return Either.left(AppException.nullValue());
       }
 
       final note = NoteModel.fromFirestore(doc);

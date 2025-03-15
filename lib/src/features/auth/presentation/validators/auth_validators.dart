@@ -3,22 +3,24 @@ import 'package:imaginotas/src/core/extensions/string_validator_extension.dart';
 
 class AuthValidators {
   static String? validateEmail(String? email) {
-    if (email == null || email.isEmpty) return ValidatorMessages.emailRequired;
+    if (email == null || email.isEmpty) {
+      return AuthValidatorMessages.emailRequired;
+    }
 
-    if (!email.isEmailValid) return ValidatorMessages.invalidEmail;
+    if (!email.isEmailValid) return AuthValidatorMessages.invalidEmail;
 
     return null;
   }
 
   static String? validatePassword(String? password) {
     if (password == null || password.isEmpty) {
-      return ValidatorMessages.passwordRequired;
+      return AuthValidatorMessages.passwordRequired;
     }
 
-    if (password.length < 8) return ValidatorMessages.min8Characters;
+    if (password.length < 8) return AuthValidatorMessages.min8Characters;
 
     if (!password.isPasswordValid) {
-      return ValidatorMessages.includeLetterAndNumber;
+      return AuthValidatorMessages.includeLetterAndNumber;
     }
 
     return null;
@@ -29,18 +31,18 @@ class AuthValidators {
     String? password,
   ) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
-      return ValidatorMessages.confirmPasswordRequired;
+      return AuthValidatorMessages.confirmPasswordRequired;
     }
 
     if (confirmPassword != password) {
-      return ValidatorMessages.passwordsDoNotMatch;
+      return AuthValidatorMessages.passwordsDoNotMatch;
     }
 
     return null;
   }
 }
 
-class ValidatorMessages {
+class AuthValidatorMessages {
   static String get emailRequired => AppLocalizations.current.emailIsRequired;
   static String get invalidEmail =>
       AppLocalizations.current.invalidEmailAddress;
@@ -52,5 +54,6 @@ class ValidatorMessages {
       AppLocalizations.current.includeLetterAndNumber;
   static String get confirmPasswordRequired =>
       AppLocalizations.current.confirmPasswordIsRequired;
-  static String get passwordsDoNotMatch => AppLocalizations.current.passwordsDoNotMatch;
+  static String get passwordsDoNotMatch =>
+      AppLocalizations.current.passwordsDoNotMatch;
 }
