@@ -3,7 +3,7 @@ enum AppRoute {
   login(path: '/login'),
   register(path: '/register'),
   home(path: '/home'),
-  assistance(path: '/note', parent: AppRoute.home);
+  note(path: '/note', parent: AppRoute.home);
 
   const AppRoute({required this.path, this.parent});
 

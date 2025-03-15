@@ -17,12 +17,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required AuthUseCases authUseCases})
     : _authUseCases = authUseCases,
       super(AuthChecking()) {
-    _handlers();
+    _eventHandlers();
     _subscribeToAuthChanges();
     _checkStatus();
   }
 
-  void _handlers() {
+  void _eventHandlers() {
     on<AuthLoginRequested>(_onLoginRequested);
     on<AuthRegisterRequested>(_onRegisterRequested);
     on<AuthCheckStatusRequested>(_onCheckStatusRequested);

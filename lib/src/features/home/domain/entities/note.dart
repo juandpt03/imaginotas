@@ -20,6 +20,9 @@ class NoteEntity extends Equatable {
     this.userId = '',
   });
 
+  factory NoteEntity.empty() =>
+      NoteEntity(createdAt: DateTime.now(), updatedAt: DateTime.now());
+
   NoteEntity copyWith({
     String? id,
     String? title,

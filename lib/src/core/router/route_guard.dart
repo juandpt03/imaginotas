@@ -4,8 +4,12 @@ import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.da
 class RouteGuard {
   static final Map<Type, List<String>> _allowedRoutes = {
     AuthChecking: [AppRoute.splash.fullPath],
-    AuthUnauthenticated: [AppRoute.login.fullPath, AppRoute.register.fullPath],
-    AuthAuthenticated: [AppRoute.home.fullPath],
+    AuthUnauthenticated: [
+      AppRoute.login.fullPath,
+      AppRoute.register.fullPath,
+      
+    ],
+    AuthAuthenticated: [AppRoute.home.fullPath, AppRoute.note.fullPath],
   };
 
   static final Map<Type, String> _redirectRoutes = {
