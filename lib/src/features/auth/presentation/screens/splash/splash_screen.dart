@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
-          child: ImageManager.icons.logo.toImage(height: 80),
+          child: ImageManager.icons.logo.toImage(height: 150),
         ),
       ),
     );

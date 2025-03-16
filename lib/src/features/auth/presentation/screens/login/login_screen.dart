@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onChanged:
                                     context.read<LoginBloc>().onEmailChanged,
                                 hintText: AppLocalizations.of(context).email,
-                                keyboardType: TextInputType.number,
+                                keyboardType: TextInputType.emailAddress,
                                 suffixIcon: const Icon(Icons.alternate_email),
                                 validator: AuthValidators.validateEmail,
                               ),

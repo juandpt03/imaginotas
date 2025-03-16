@@ -6,7 +6,6 @@ import 'package:imaginotas/src/features/auth/domain/domain.dart';
 import 'package:imaginotas/src/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/notes/notes_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/screens/home/widgets/widgets.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets/app_bar/custom_app_bar.dart';
 
 import 'package:imaginotas/src/features/shared/shared.dart';
 

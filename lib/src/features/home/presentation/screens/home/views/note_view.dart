@@ -7,7 +7,6 @@ import 'package:imaginotas/src/features/home/domain/entities/note.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/note/note_form_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/bloc/notes/notes_bloc.dart';
 import 'package:imaginotas/src/features/home/presentation/validators/home_validators.dart';
-import 'package:imaginotas/src/features/shared/presentation/widgets/app_bar/custom_app_bar.dart';
 import 'package:imaginotas/src/features/shared/shared.dart';
 
 class NoteView extends StatefulWidget {

@@ -8,6 +8,6 @@ var logger = Logger(
     errorMethodCount: 8,
     lineLength: 120,
     colors: true,
-    printEmojis: true,
+    printEmojis: false,
   ),
 );
